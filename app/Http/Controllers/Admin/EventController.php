@@ -1,0 +1,71 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Event;
+use App\Models\EventType;
+use Illuminate\Http\Request;
+
+class EventController extends Controller
+{
+    public function index()
+    {
+        $events = Event::with('eventType')->latest('event_start')->paginate(15);
+        return view('admin.events.index', compact('events'));
+    }
+
+    public function create()
+    {
+        $types = EventType::all();
+        return view('admin.events.create', compact('types'));
+    }
+
+    public function store(Request $request)
+    {
+        $validated = $request->validate([
+            'title_th' => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
+            'description_th' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'event_type_id' => 'required|exists:event_types,id',
+            'event_start' => 'required|date',
+            'event_end' => 'nullable|date|after:event_start',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        Event::create($validated);
+
+        return redirect()->route('admin.events.index')->with('success', 'Event created successfully.');
+    }
+
+    public function edit(Event $event)
+    {
+        $types = EventType::all();
+        return view('admin.events.edit', compact('event', 'types'));
+    }
+
+    public function update(Request $request, Event $event)
+    {
+        $validated = $request->validate([
+            'title_th' => 'required|string|max:255',
+            'title_en' => 'nullable|string|max:255',
+            'description_th' => 'nullable|string',
+            'description_en' => 'nullable|string',
+            'event_type_id' => 'required|exists:event_types,id',
+            'event_start' => 'required|date',
+            'event_end' => 'nullable|date|after:event_start',
+            'location' => 'nullable|string|max:255',
+        ]);
+
+        $event->update($validated);
+
+        return redirect()->route('admin.events.index')->with('success', 'Event updated successfully.');
+    }
+
+    public function destroy(Event $event)
+    {
+        $event->delete();
+        return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully.');
+    }
+}

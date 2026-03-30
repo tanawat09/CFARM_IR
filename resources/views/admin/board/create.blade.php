@@ -1,0 +1,98 @@
+@extends('layouts.admin')
+@section('title', 'เพิ่มกรรมการ')
+
+@section('content')
+<div class="row align-items-center mb-4">
+    <div class="col">
+        <h2 class="h5 page-title">เพิ่มกรรมการใหม่</h2>
+    </div>
+    <div class="col-auto">
+        <a href="{{ route('admin.board.index') }}" class="btn btn-secondary btn-sm">
+            <i class="fe fe-arrow-left"></i> กลับไปรายการ
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10 mx-auto">
+        <div class="card shadow">
+            <div class="card-body">
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul class="mb-0">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
+                <form action="{{ route('admin.board.store') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name_th">ชื่อ (ไทย) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="name_th" name="name_th" value="{{ old('name_th') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="name_en">ชื่อ (อังกฤษ)</label>
+                            <input type="text" class="form-control" id="name_en" name="name_en" value="{{ old('name_en') }}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="position_th">ตำแหน่ง (ไทย) <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="position_th" name="position_th" value="{{ old('position_th') }}" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="position_en">ตำแหน่ง (อังกฤษ)</label>
+                            <input type="text" class="form-control" id="position_en" name="position_en" value="{{ old('position_en') }}">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="biography_th">ประวัติ (ไทย)</label>
+                            <textarea class="form-control" id="biography_th" name="biography_th" rows="4">{{ old('biography_th') }}</textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="biography_en">ประวัติ (อังกฤษ)</label>
+                            <textarea class="form-control" id="biography_en" name="biography_en" rows="4">{{ old('biography_en') }}</textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <label for="image">รูปโปรไฟล์ (JPG, PNG)</label>
+                        <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="image" name="image" accept="image/jpeg,image/png">
+                                <label class="custom-file-label" for="image">เลือกรูป</label>
+                            </div>
+                            <small class="text-muted">ขนาดไฟล์สูงสุด: 2MB</small>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <label for="display_order">ลำดับการแสดง <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" id="display_order" name="display_order" value="{{ old('display_order', 0) }}" required>
+                            <small class="text-muted">ตัวเลขน้อยกว่าจะแสดงก่อน</small>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">บันทึกกรรมการ</button>
+                    <a href="{{ route('admin.board.index') }}" class="btn btn-light ml-2">ยกเลิก</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('scripts')
+<script>
+    $('.custom-file-input').on('change',function(){
+        var fileName = $(this).val().split('\\').pop();
+        $(this).siblings('.custom-file-label').addClass("selected").html(fileName);
+    });
+</script>
+@endsection

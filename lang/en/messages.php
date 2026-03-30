@@ -1,0 +1,198 @@
+<?php
+
+return [
+    'home' => 'Home',
+    'about_us' => 'About Us',
+    'news' => 'News',
+    'financial' => 'Financial Info',
+    'documents' => 'Published Documents',
+    'events' => 'Events',
+    'governance' => 'Corporate Governance',
+    'shareholders' => 'Shareholder Info',
+    'contact_us' => 'Contact Us',
+    'search_placeholder' => 'Search',
+    'investor_relations' => 'Investor Relations',
+    'news_and_events' => 'News & Events',
+    'set_news' => 'SET Announcements',
+    'press_releases' => 'Press Releases',
+    'event_calendar' => 'Event Calendar',
+    'all_rights_reserved' => 'All Rights Reserved',
+    'privacy_policy' => 'Privacy Policy',
+    'cookie_policy' => 'Cookie Policy',
+
+    // Home Page - Hero & Stock
+    'change' => 'Change',
+    'volume_shares' => 'Volume (Shares)',
+    'view_details' => 'View Details',
+
+    // Home Page - Business Overview
+    'business_overview' => 'Business Overview',
+    'core_revenue_structure' => 'Core Revenue Structure',
+    'revenue' => 'Revenue',
+    'broilers_contract_farming' => 'Broilers - Contract Farming',
+    'broilers_desc' => 'Revenue from guaranteed price broiler sales',
+    'by_products' => 'By-products (Chicken Manure)',
+    'by_products_desc' => 'Revenue from chicken manure sold for bio-fertilizer',
+    'company_desc_short' => 'CFARM engages in a Contract Farming broiler business, operating 8 EVAP closed-system farms with modern technology and international safety standards.',
+
+    // Home Page - Financials
+    'financial_highlights' => 'Financial Highlights',
+    'registered_capital' => 'Registered Capital',
+    'million_thb' => 'Million THB',
+    'paid_up_capital' => 'Paid-up Capital',
+    'number_of_farms' => 'Number of Farms',
+    'evap_farms' => 'EVAP closed farms',
+    'total_revenue' => 'Total Revenue',
+    'net_profit' => 'Net Profit',
+    'total_assets' => 'Total Assets',
+    'view_full_financial_report' => 'View Full Financial Report',
+
+    // Home Page - Documents
+    'document_center' => 'Published Documents',
+    '56_1_report' => '56-1 One Report',
+    'year_2025' => 'Year 2025',
+    'latest_prospectus' => 'Latest Prospectus',
+    'download_pdf' => 'Download PDF',
+    'financial_statements' => 'Financial Statements',
+    'last_updated_2025' => 'Last updated: 2025',
+    'select_quarter' => 'Select Quarter',
+    'q4_2025' => 'Q4/2025',
+    'q3_2025' => 'Q3/2025',
+    'q2_2025' => 'Q2/2025',
+    'q1_2025' => 'Q1/2025',
+    'mda' => 'Management Discussion and Analysis (MD&A)',
+    'annual_report' => 'Annual Report (56-1 One Report)',
+    'e_agm_invitation' => 'Invitation to Shareholders\' Meeting (E-AGM)',
+    'last_updated_schedule_2026' => 'Last updated: 2026 Schedule',
+    'view_all_documents' => 'View All Documents',
+
+    // Home Page - About Summary
+    'leader_in_evap' => 'Leader in Closed-System Farm Technology',
+    'about_summary_desc' => 'CHUWIT FARM (2019) PCL operates a Contract Farming broiler business. We are committed to managing our farms with Evaporative Cooling System (EVAP) technology. Currently, the company has 8 farms that meet international standards.',
+    'get_to_know_us' => 'Get to Know Us',
+
+    // Home Page - News & Events
+    'latest_news' => 'Latest News',
+    'view_all_news' => 'View All News',
+    'read_more_details' => 'Read More',
+    'investor_events' => 'Investor Events',
+    'no_upcoming_events' => 'No upcoming events at the moment.',
+
+    // Home Page - Board
+    'board_of_directors' => 'Board of Directors',
+    'view_all' => 'View All',
+
+    // About Us Page
+    'about_us_title' => 'About Us - CFARM',
+    'about_company_name' => 'CHUWIT FARM (2019) PUBLIC COMPANY LIMITED',
+    'about_desc_1' => 'CHUWIT FARM (2019) PCL operates a Contract Farming broiler business. The company invests in construction and environmental improvements, including farming equipment as recommended and approved by contracting companies. The broilers are then supplied to the contractors\' slaughterhouses.',
+    'about_desc_2' => 'Our primary inputs are broiler chicks, a popular breed in the market due to their high yield, excellent growth, and low feed conversion ratio. These are raised in Evaporative Cooling System (EVAP) closed houses equipped with automatic feeding and watering systems until they reach 38-45 days of age, after which they are sold to our partners.',
+    'vision' => 'Vision',
+    'vision_desc' => '"We are a livestock leader focused on quality and international standards for sustainable development."',
+    'mission' => 'Mission',
+    'mission_1' => 'Fulfill contractual obligations with our partners.',
+    'mission_2' => 'Develop efficient and capable personnel.',
+    'mission_3' => 'Operate systematically towards international standards.',
+    'mission_4' => 'Conduct business activities for sustainable coexistence with the environment.',
+    'mission_5' => 'Support and engage with the community and society sustainably.',
+    'mission_6' => 'Utilize raw materials and equipment efficiently for continuous profitability.',
+    'mission_7' => 'Use resources efficiently according to the 3Rs (Reduce, Reuse, Recycle).',
+    'mission_8' => 'Comply with environmental, occupational health, and safety laws.',
+    'mission_9' => 'Create a safe working system free from occupational illnesses.',
+    
+    'company_info' => 'Company Information',
+    'company_name_label' => 'Company Name:',
+    'english_name_label' => 'English Name:',
+    'stock_symbol_label' => 'Stock Symbol:',
+    'market_label' => 'Market:',
+    'mai_market' => 'mai (Market for Alternative Investment)',
+    'capital_label' => 'Registered Capital:',
+    'paid_capital_label' => 'Paid-up Capital:',
+    'converted_label' => 'Converted to PCL:',
+    'converted_date' => 'March 13, 2023',
+    'business_label' => 'Business:',
+    'business_desc' => 'Broiler Farm (Contract Farming)',
+    'farms_label' => 'Number of Farms:',
+    'farms_count' => '8 Farms',
+    'view_company_profile' => 'View Company Profile',
+    
+    'head_office' => 'Head Office Address',
+    'head_office_address' => '723 Chokchai-Det Udom Road, Nang Rong Subdistrict, Nang Rong District, Buriram 31110',
+    'management_team' => 'Management Team',
+    
+    // Financial Page
+    'financial_information' => 'Financial Information',
+    'category' => 'Category:',
+    'all' => 'All',
+    'year' => 'Year:',
+    'title' => 'Title',
+    'action' => 'Action',
+    'download' => 'Download',
+    'no_reports' => 'No reports found.',
+
+    // News Page
+    'news_announcements' => 'News & Announcements',
+    'read_more' => 'Read More',
+    'no_news' => 'No news found.',
+    'home' => 'Home',
+    'news' => 'News',
+    'related_news' => 'Related News',
+
+    // Events Page
+    'investor_events' => 'Investor Events',
+    'upcoming_events' => 'Upcoming Events',
+    'all_events' => 'All Events',
+    'date' => 'Date',
+    'event' => 'Event',
+    'type' => 'Type',
+    'date' => 'Date',
+    'event' => 'Event',
+    'type' => 'Type',
+    'location' => 'Location',
+    'no_events' => 'No events found.',
+
+    // Governance
+    'governance' => 'Corporate Governance',
+    'version' => 'Version',
+    'effective_date' => 'Effective Date',
+
+    // Document Library
+    'document_library' => 'Document Library',
+    'downloads_count' => 'downloads',
+    'no_documents' => 'No documents found.',
+
+    // Shareholders Page
+    'shareholding_structure' => 'Shareholding Structure',
+    'major_shareholders_proportion' => 'Major Shareholders Proportion',
+    'major_shareholders_info' => 'Major Shareholders Information',
+    'major_shareholders_desc' => 'List of major shareholders of CHUWIT FARM (2019) PCL.',
+    'as_of_date' => 'As of',
+    'top_1_shareholder' => 'Top Shareholder',
+    'thb' => 'THB',
+    'top_12_shareholders' => 'Top 12 Shareholders',
+    'rank' => 'Rank',
+    'shareholder' => 'Shareholder',
+    'shares' => 'Shares',
+    'percentage' => 'Percentage (%)',
+    'set_reference_note' => 'Note: Reference data from the Stock Exchange of Thailand (SET) website',
+    'other_shareholders' => 'Other Shareholders',
+
+    // Contact Us Page
+    'contact_us' => 'Contact Us',
+    'send_message' => 'Send us a message',
+    'name_label' => 'Full Name *',
+    'email_label' => 'Email *',
+    'phone_label' => 'Phone Number',
+    'message_label' => 'Message *',
+    'submit_message' => 'Send Message',
+    'follow_us' => 'Follow Us',
+
+    // Search Page
+    'search' => 'Search',
+    'search_placeholder' => 'Search news, documents, reports, events...',
+    'search_button' => 'Search',
+    'found' => 'Found',
+    'results_for' => 'results for',
+    'document' => 'Document',
+    'financial' => 'Financial',
+];
