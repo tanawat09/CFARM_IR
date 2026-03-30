@@ -445,16 +445,16 @@
                                         <div class="doc-card-sub" title="{{ $sub }}">{{ $sub }}</div>
                                     @endif
 
-                                    <div class="doc-card-footer" style="justify-content: flex-end; gap: 8px;">
+                                    <div class="doc-card-footer" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding-top: 18px; border-top: 1px solid rgba(0,0,0,0.06);">
                                         @if($doc->external_link)
-                                            <a href="{{ route('documents.download', $doc) }}" target="_blank" class="doc-btn">
+                                            <a href="{{ route('documents.download', $doc) }}" target="_blank" class="doc-btn" style="grid-column: 1 / -1; border-radius: 10px; padding: 10px 15px;">
                                                 <i class="bi bi-box-arrow-up-right"></i> {{ $locale == 'en' ? 'Open Link' : 'เปิดลิงก์' }}
                                             </a>
                                         @else
-                                            <a href="{{ route('documents.view', $doc) }}" target="_blank" class="doc-btn" style="background: rgba(0,0,0,0.05); color: var(--cfarm-text);">
+                                            <a href="{{ route('documents.view', $doc) }}" target="_blank" class="doc-btn" style="background: #f4f5f7; color: #333; border-radius: 10px; padding: 10px 15px;">
                                                 <i class="bi bi-eye"></i> {{ $locale == 'en' ? 'View Online' : 'ดูออนไลน์' }}
                                             </a>
-                                            <a href="{{ route('documents.download', $doc) }}" class="doc-btn">
+                                            <a href="{{ route('documents.download', $doc) }}" class="doc-btn" style="background: #ebf5ed; color: #2e7d32; border-radius: 10px; padding: 10px 15px;">
                                                 <i class="bi bi-download"></i> {{ __('messages.download') }}
                                             </a>
                                         @endif
