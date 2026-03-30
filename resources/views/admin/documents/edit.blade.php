@@ -53,9 +53,15 @@
             </div>
 
             <div class="mb-4">
-                <label class="form-label">เปลี่ยนไฟล์เอกสาร (ไม่บังคับ)</label>
+                <label class="form-label">ลิงก์ไฟล์เอกสารปัจจุบัน</label>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control bg-light text-muted" value="{{ asset('storage/' . $document->file_path) }}" readonly id="docLink">
+                    <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('docLink').value); alert('คัดลอกลิงก์เรียบร้อยแล้ว');"><i class="bi bi-clipboard"></i> คัดลอกลิงก์</button>
+                    <a href="{{ asset('storage/' . $document->file_path) }}" target="_blank" class="btn btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i> เปิดดูไฟล์</a>
+                </div>
+
+                <label class="form-label">เปลี่ยนไฟล์เอกสาร (หากต้องการอัปเดต)</label>
                 <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" accept=".pdf,.doc,.docx,.xls,.xlsx">
-                <small class="text-muted">ไฟล์ปัจจุบัน: <a href="{{ Storage::url($document->file_path) }}" target="_blank">ดูไฟล์</a></small>
                 @error('file') <div class="invalid-feedback">{{ $message }}</div> @enderror
             </div>
 
