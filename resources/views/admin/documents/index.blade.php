@@ -24,7 +24,15 @@
                         <td>{{ Str::limit($doc->title_th, 50) }}</td>
                         <td><span class="badge bg-info text-dark">{{ $doc->category->name_th ?? '-' }}</span></td>
                         <td><span class="badge bg-secondary">{{ $doc->year->year ?? '-' }}</span></td>
-                        <td><a href="{{ Storage::url($doc->file_path) }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-download"></i> ดู</a></td>
+                        <td>
+                            @if($doc->external_link)
+                                <a href="{{ $doc->external_link }}" target="_blank" class="btn btn-sm btn-outline-info"><i class="bi bi-link-45deg"></i> ลิงก์ภายนอก</a>
+                            @elseif($doc->file_path)
+                                <a href="{{ asset('storage/' . $doc->file_path) }}" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-file-pdf"></i> ไฟล์เอกสาร</a>
+                            @else
+                                <span class="text-muted small">-</span>
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('admin.documents.edit', $doc) }}" class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></a>
                             <form action="{{ route('admin.documents.destroy', $doc) }}" method="POST" class="d-inline" onsubmit="return confirm('ต้องการลบเอกสารนี้หรือไม่?')">

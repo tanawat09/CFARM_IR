@@ -55,14 +55,24 @@
             <div class="mb-4">
                 <label class="form-label">ลิงก์ไฟล์เอกสารปัจจุบัน</label>
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control bg-light text-muted" value="{{ asset('storage/' . $document->file_path) }}" readonly id="docLink">
+                    <input type="text" class="form-control bg-light text-muted" value="{{ $document->external_link ?? asset('storage/' . $document->file_path) }}" readonly id="docLink">
                     <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('docLink').value); alert('คัดลอกลิงก์เรียบร้อยแล้ว');"><i class="bi bi-clipboard"></i> คัดลอกลิงก์</button>
-                    <a href="{{ asset('storage/' . $document->file_path) }}" target="_blank" class="btn btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i> เปิดดูไฟล์</a>
+                    <a href="{{ $document->external_link ?? asset('storage/' . $document->file_path) }}" target="_blank" class="btn btn-outline-primary"><i class="bi bi-box-arrow-up-right"></i> เปิดดูไฟล์</a>
                 </div>
 
-                <label class="form-label">เปลี่ยนไฟล์เอกสาร (หากต้องการอัปเดต)</label>
-                <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" accept=".pdf,.doc,.docx,.xls,.xlsx">
-                @error('file') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label">เปลี่ยนไฟล์เอกสาร (หากต้องการอัปเดต)</label>
+                        <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                        @error('file') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">เปลี่ยนลิงก์เอกสารภายนอก</label>
+                        <input type="url" name="external_link" class="form-control @error('external_link') is-invalid @enderror" value="{{ old('external_link', $document->external_link) }}" placeholder="https://...">
+                        <small class="text-muted">หากใส่ลิงก์ใหม่ ระบบจะลบไฟล์เก่าที่เคยอัปโหลดไว้</small>
+                        @error('external_link') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                    </div>
+                </div>
             </div>
 
             <div class="text-end">

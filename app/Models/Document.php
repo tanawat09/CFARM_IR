@@ -10,7 +10,7 @@ class Document extends Model
     use HasFactory;
 
     protected $fillable = [
-        'category_id', 'year_id', 'title_th', 'title_en', 'file_path', 'downloads',
+        'category_id', 'year_id', 'title_th', 'title_en', 'file_path', 'downloads', 'external_link',
     ];
 
     public function category()

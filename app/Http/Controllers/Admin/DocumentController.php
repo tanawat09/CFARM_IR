@@ -31,11 +31,14 @@ class DocumentController extends Controller
             'title_en' => 'nullable|string|max:255',
             'category_id' => 'required|exists:document_categories,id',
             'year_id' => 'nullable|exists:document_years,id',
-            'file' => 'required|file|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+            'file' => 'required_without:external_link|file|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+            'external_link' => 'nullable|required_without:file|url|max:2048',
         ]);
 
-        $path = $request->file('file')->store('documents', 'public');
-        $validated['file_path'] = $path;
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('documents', 'public');
+            $validated['file_path'] = $path;
+        }
 
         Document::create($validated);
 
@@ -57,11 +60,20 @@ class DocumentController extends Controller
             'category_id' => 'required|exists:document_categories,id',
             'year_id' => 'nullable|exists:document_years,id',
             'file' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:20480',
+            'external_link' => 'nullable|url|max:2048',
         ]);
 
         if ($request->hasFile('file')) {
-            Storage::disk('public')->delete($document->file_path);
+            if ($document->file_path) {
+                Storage::disk('public')->delete($document->file_path);
+            }
             $validated['file_path'] = $request->file('file')->store('documents', 'public');
+            $validated['external_link'] = null; // Clear external link if a local file is uploaded
+        } elseif ($request->filled('external_link')) {
+            if ($document->file_path) {
+                Storage::disk('public')->delete($document->file_path);
+                $validated['file_path'] = null; // Clear local file if external link is provided
+            }
         }
 
         $document->update($validated);
@@ -71,7 +83,9 @@ class DocumentController extends Controller
 
     public function destroy(Document $document)
     {
-        Storage::disk('public')->delete($document->file_path);
+        if ($document->file_path) {
+            Storage::disk('public')->delete($document->file_path);
+        }
         $document->delete();
         return redirect()->route('admin.documents.index')->with('success', 'Document deleted successfully.');
     }

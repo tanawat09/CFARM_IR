@@ -51,11 +51,18 @@
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label class="form-label">ไฟล์เอกสาร (PDF, DOCX, XLSX) <span class="text-danger">*</span></label>
-                <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" required accept=".pdf,.doc,.docx,.xls,.xlsx">
-                <small class="text-muted">ขนาดไฟล์สูงสุด: 20MB</small>
-                @error('file') <div class="invalid-feedback">{{ $message }}</div> @enderror
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label">ไฟล์เอกสาร (PDF, DOCX, XLSX)</label>
+                    <input type="file" name="file" class="form-control @error('file') is-invalid @enderror" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                    <small class="text-muted">อัปโหลดไฟล์ หรือ ใส่ลิงก์ภายนอกอย่างใดอย่างหนึ่ง</small>
+                    @error('file') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">ลิงก์เอกสารภายนอก (URL)</label>
+                    <input type="url" name="external_link" class="form-control @error('external_link') is-invalid @enderror" value="{{ old('external_link') }}" placeholder="https://...">
+                    @error('external_link') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
             </div>
 
             <div class="text-end">
