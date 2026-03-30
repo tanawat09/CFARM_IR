@@ -42,7 +42,9 @@ class DocumentController extends Controller
         abort_unless(Storage::disk('public')->exists($document->file_path), 404);
 
         $this->documentService->incrementDownload($document);
-        return Storage::disk('public')->download($document->file_path);
+        $extension = pathinfo($document->file_path, PATHINFO_EXTENSION) ?: 'pdf';
+        $downloadName = $document->title_th . '.' . $extension;
+        return Storage::disk('public')->download($document->file_path, $downloadName);
     }
 
     public function view(Document $document)
