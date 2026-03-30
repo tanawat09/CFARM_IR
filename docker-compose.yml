@@ -9,6 +9,8 @@ services:
     container_name: cfarm_ir_app
     restart: unless-stopped
     working_dir: /var/www/html
+    volumes:
+      - cfarm_storage_data:/var/www/html/storage
     environment:
       APP_NAME: "CFARM IR System"
       APP_ENV: production
@@ -34,6 +36,8 @@ services:
     restart: unless-stopped
     ports:
       - "2019:80"
+    volumes:
+      - cfarm_storage_data:/var/www/html/storage
     networks:
       - cfarm_network
     depends_on:
@@ -66,3 +70,6 @@ services:
 networks:
   cfarm_network:
     driver: bridge
+
+volumes:
+  cfarm_storage_data:
