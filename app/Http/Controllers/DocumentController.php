@@ -44,4 +44,18 @@ class DocumentController extends Controller
         $this->documentService->incrementDownload($document);
         return Storage::disk('public')->download($document->file_path);
     }
+
+    public function view(Document $document)
+    {
+        if ($document->external_link) {
+            $this->documentService->incrementDownload($document);
+            return redirect()->away($document->external_link);
+        }
+
+        abort_unless($document->file_path && str_starts_with($document->file_path, 'documents/'), 404);
+        abort_unless(Storage::disk('public')->exists($document->file_path), 404);
+
+        $this->documentService->incrementDownload($document);
+        return redirect(asset('storage/' . $document->file_path));
+    }
 }

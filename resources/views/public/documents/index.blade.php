@@ -445,10 +445,19 @@
                                         <div class="doc-card-sub" title="{{ $sub }}">{{ $sub }}</div>
                                     @endif
 
-                                    <div class="doc-card-footer" style="justify-content: flex-end;">
-                                        <a href="{{ route('documents.download', $doc) }}" target="_blank" class="doc-btn">
-                                            <i class="bi bi-download"></i> {{ __('messages.download') }}
-                                        </a>
+                                    <div class="doc-card-footer" style="justify-content: flex-end; gap: 8px;">
+                                        @if($doc->external_link)
+                                            <a href="{{ route('documents.download', $doc) }}" target="_blank" class="doc-btn">
+                                                <i class="bi bi-box-arrow-up-right"></i> {{ __('messages.view') ?? ($locale == 'en' ? 'Open Link' : 'เปิดลิงก์') }}
+                                            </a>
+                                        @else
+                                            <a href="{{ route('documents.view', $doc) }}" target="_blank" class="doc-btn" style="background: rgba(0,0,0,0.05); color: var(--cfarm-text);">
+                                                <i class="bi bi-eye"></i> {{ __('messages.view') ?? ($locale == 'en' ? 'View' : 'เปิดดู') }}
+                                            </a>
+                                            <a href="{{ route('documents.download', $doc) }}" class="doc-btn">
+                                                <i class="bi bi-download"></i> {{ __('messages.download') }}
+                                            </a>
+                                        @endif
                                     </div>
                                 </div>
                             </div>

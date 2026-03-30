@@ -43,6 +43,7 @@ Route::get('/financial', [FinancialController::class, 'index'])->name('financial
 // Document Library
 Route::get('/documents', [DocumentController::class, 'index'])->name('documents.index');
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])->name('documents.download');
+Route::get('/documents/{document}/view', [DocumentController::class, 'view'])->name('documents.view');
 
 // Events
 Route::get('/events', [EventController::class, 'index'])->name('events.index');
