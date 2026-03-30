@@ -21,3 +21,13 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www/html
+
+# Copy the application code
+COPY . /var/www/html
+
+# Check if composer install is needed (it will use the copied composer.json)
+# If composer.json exists, install dependencies
+RUN if [ -f "composer.json" ]; then composer install --no-interaction --optimize-autoloader --no-dev; fi
+
+# Assign permissions for Laravel
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache

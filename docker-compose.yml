@@ -9,8 +9,6 @@ services:
     container_name: cfarm_ir_app
     restart: unless-stopped
     working_dir: /var/www/html
-    volumes:
-      - ./:/var/www/html
     environment:
       APP_NAME: "CFARM IR System"
       APP_ENV: production
@@ -28,14 +26,14 @@ services:
       - cfarm_network
 
   webserver:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    image: cfarm-ir-webserver:v1
     container_name: cfarm_ir_webserver
     restart: unless-stopped
     ports:
       - "2019:80"
-    volumes:
-      - ./:/var/www/html
-      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - cfarm_network
     depends_on:
@@ -46,8 +44,6 @@ services:
     container_name: cfarm_ir_scheduler
     restart: unless-stopped
     working_dir: /var/www/html
-    volumes:
-      - ./:/var/www/html
     command: php artisan schedule:work
     environment:
       APP_NAME: "CFARM IR System"
