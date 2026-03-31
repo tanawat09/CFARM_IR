@@ -48,18 +48,17 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <div class="dropdown">
-                                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <span class="text-muted sr-only">Action</span>
-                                        </button>
-                                        <div class="dropdown-menu dropdown-menu-right">
-                                            <a class="dropdown-item" href="{{ route('admin.events.edit', $event->id) }}">แก้ไข</a>
-                                            <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" onsubmit="return confirm('ต้องการลบกิจกรรมนี้หรือไม่?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="dropdown-item text-danger">ลบ</button>
-                                            </form>
-                                        </div>
+                                    <div class="d-flex gap-2">
+                                        <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-sm btn-outline-primary shadow-sm" style="border-radius: 8px;">
+                                            <i class="bi bi-pencil-square"></i> แก้ไข
+                                        </a>
+                                        <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST" class="d-inline" onsubmit="return confirm('ต้องการลบกิจกรรมนี้หรือไม่?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger shadow-sm" style="border-radius: 8px;">
+                                                <i class="bi bi-trash"></i> ลบ
+                                            </button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
