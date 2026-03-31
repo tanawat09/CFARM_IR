@@ -723,7 +723,7 @@
 
     {{-- Cookie & Privacy Consent Banner (Floating Widget Style) --}}
     <div x-data="cookieConsent()" x-show="showBanner" x-transition.translate.y.100.duration.600ms.opacity 
-         class="position-fixed" style="bottom: 30px; left: 30px; width: 360px; max-width: calc(100vw - 60px); z-index: 9999; display: none;">
+         class="position-fixed" style="bottom: 30px; right: 30px; width: 360px; max-width: calc(100vw - 60px); z-index: 9999; display: none;">
         <div class="bg-white p-4" style="border-radius: 20px; box-shadow: 0 15px 50px rgba(0,0,0,0.15); border: 1px solid rgba(46,125,50,0.1);">
             <div class="d-flex align-items-center gap-3 mb-3">
                 <div class="bg-success bg-opacity-10 text-success rounded-circle d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
