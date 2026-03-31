@@ -721,6 +721,58 @@
         </div>
     </footer>
 
+    {{-- Cookie & Privacy Consent Banner (Alpine.js) --}}
+    <div x-data="cookieConsent()" x-show="showBanner" x-transition.opacity.duration.600ms 
+         class="position-fixed bottom-0 start-0 w-100" style="z-index: 1050; display: none;">
+        <div class="bg-white" style="border-radius: 20px 20px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,0.08); border-top: 1px solid rgba(46,125,50,0.1);">
+            <div class="container py-4">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 mb-3 mb-lg-0">
+                        <div class="d-flex align-items-start gap-4">
+                            <div class="bg-success bg-opacity-10 text-success rounded-circle d-flex flex-shrink-0 align-items-center justify-content-center mt-1" style="width: 45px; height: 45px;">
+                                <i class="bi bi-shield-check fs-4"></i>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-1 text-dark" style="font-size: 1.05rem;">เว็บไซต์นี้ใช้คุกกี้ (Cookies)</h6>
+                                <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.6;">
+                                    เราใช้คุกกี้เพื่อมอบประสบการณ์การใช้งานที่ดียิ่งขึ้น และอนุญาตให้เว็บไซต์ทำงานได้อย่างมีประสิทธิภาพ การเข้าใช้งานเว็บไซต์นี้ถือเป็นการยอมรับ <a href="{{ route('privacy.policy') }}" target="_blank" class="text-success text-decoration-none fw-medium" style="border-bottom: 1px dashed var(--cfarm-green);">นโยบายความเป็นส่วนตัว</a> และ <a href="{{ route('cookie.policy') }}" target="_blank" class="text-success text-decoration-none fw-medium" style="border-bottom: 1px dashed var(--cfarm-green);">นโยบายคุกกี้</a> ของเรา
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <div class="d-flex gap-2 justify-content-lg-end">
+                            <a href="{{ route('cookie.policy') }}" class="btn btn-light rounded-pill px-4" style="color: var(--cfarm-text-light); height: 42px; display: inline-flex; align-items: center; border: 1px solid #e0e0e0; transition: all 0.3s;">ดูรายละเอียด</a>
+                            <button @click="acceptCookies()" class="btn btn-success rounded-pill px-4 shadow-sm" style="height: 42px; display: inline-flex; align-items: center; background: linear-gradient(135deg, var(--cfarm-green-light), var(--cfarm-green)); border: none; transition: all 0.3s;">
+                                ยอมรับทั้งหมด
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function cookieConsent() {
+            return {
+                showBanner: false,
+                init() {
+                    // Show banner if consent hasn't been given yet
+                    if (!localStorage.getItem('cfarm_cookie_consent')) {
+                        setTimeout(() => {
+                            this.showBanner = true;
+                        }, 1200);
+                    }
+                },
+                acceptCookies() {
+                    localStorage.setItem('cfarm_cookie_consent', 'accepted');
+                    this.showBanner = false;
+                }
+            }
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Navbar Scrolled State
