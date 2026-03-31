@@ -710,8 +710,8 @@
                         </div>
                         <div class="col-md-5">
                             <div class="footer-bottom-links">
-                                <a href="#">{{ __('messages.privacy_policy') }}</a>
-                                <a href="#">{{ __('messages.cookie_policy') }}</a>
+                                <a href="{{ route('privacy.policy') }}">{{ __('messages.privacy_policy') }}</a>
+                                <a href="{{ route('cookie.policy') }}">{{ __('messages.cookie_policy') }}</a>
                                 <a href="{{ route('events.index') }}">{{ __('messages.event_calendar') }}</a>
                             </div>
                         </div>

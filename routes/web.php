@@ -67,6 +67,10 @@ Route::post('/contact', [ContactController::class, 'store'])->middleware('thrott
 // Search
 Route::get('/search', [SearchController::class, 'index'])->middleware('throttle:60,1')->name('search');
 
+// Policy pages
+Route::view('/privacy-policy', 'public.privacy')->name('privacy.policy');
+Route::view('/cookie-policy', 'public.cookie')->name('cookie.policy');
+
 /*
 |--------------------------------------------------------------------------
 | Admin Routes (Auth Required)
