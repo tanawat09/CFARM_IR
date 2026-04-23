@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/cfarm-logo.png') }}">
     <title>@yield('title', 'CFARM Admin')</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -85,8 +86,9 @@
     {{-- Sidebar --}}
     <div class="sidebar d-flex flex-column">
         <div class="p-3 text-center">
-            <h5 class="text-white fw-bold mb-0"><i class="bi bi-building"></i> CFARM</h5>
-            <small class="text-white-50">ระบบจัดการหลังบ้าน CFARM Investor</small>
+            <img src="{{ asset('images/cfarm-logo.png') }}" alt="CFARM" class="mb-2" style="height: 50px; filter: brightness(0) invert(1);">
+            <h5 class="text-white fw-bold mb-0">CFARM</h5>
+            <small class="text-white-50 d-block">ระบบจัดการหลังบ้าน</small>
         </div>
         <hr class="border-secondary mx-3">
         <nav class="flex-grow-1">

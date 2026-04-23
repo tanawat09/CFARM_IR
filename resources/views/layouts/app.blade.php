@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/cfarm-logo.png') }}">
     <title>@yield('title', 'CFARM - นักลงทุนสัมพันธ์ | บริษัท ชูวิทย์ฟาร์ม (2019) จำกัด (มหาชน)')</title>
     <meta name="description" content="@yield('meta_description', 'บริษัท ชูวิทย์ฟาร์ม (2019) จำกัด (มหาชน) - นักลงทุนสัมพันธ์ | CHUWIT FARM (2019) PUBLIC COMPANY LIMITED')">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
