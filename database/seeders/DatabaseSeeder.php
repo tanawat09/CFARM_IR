@@ -120,9 +120,10 @@ class DatabaseSeeder extends Seeder
 
         // ── Document Categories & Years ──
         $dc1 = DocumentCategory::create(['name_th' => 'รายงานประจำปี (แบบ 56-1 One Report)', 'name_en' => 'Annual Report (Form 56-1 One Report)']);
-        $dc2 = DocumentCategory::create(['name_th' => 'เอกสารนำเสนอ', 'name_en' => 'Investor Presentations']);
+        $dc2 = DocumentCategory::create(['name_th' => 'เอกสารนำเสนอ & Webcasts', 'name_en' => 'Investor Presentations & Webcasts']);
         $dc3 = DocumentCategory::create(['name_th' => 'หนังสือชี้ชวน', 'name_en' => 'Prospectus']);
         $dc4 = DocumentCategory::create(['name_th' => 'หนังสือเชิญประชุมผู้ถือหุ้น', 'name_en' => 'Shareholder Meeting Invitation']);
+        $dc5 = DocumentCategory::create(['name_th' => 'รายงานความยั่งยืน', 'name_en' => 'Sustainability Report']);
 
         $y1 = DocumentYear::create(['year' => 2568]);
         $y2 = DocumentYear::create(['year' => 2567]);

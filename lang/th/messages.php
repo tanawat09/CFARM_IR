@@ -7,7 +7,7 @@ return [
     'financial' => 'ข้อมูลทางการเงิน',
     'documents' => 'เอกสารเผยแพร่',
     'events' => 'กิจกรรมนักลงทุน',
-    'governance' => 'การกำกับดูแลกิจการ',
+    'governance' => 'การกำกับดูแลกิจการที่ดี',
     'shareholders' => 'ข้อมูลผู้ถือหุ้น',
     'contact_us' => 'สอบถามข้อมูล',
     'search_placeholder' => 'ค้นหา',
@@ -152,9 +152,12 @@ return [
     'no_events' => 'ไม่พบข้อมูลกิจกรรม',
 
     // Governance
-    'governance' => 'การกำกับดูแลกิจการ',
+    'governance' => 'การกำกับดูแลกิจการที่ดี',
+    'governance_subtitle' => 'Corporate Governance',
     'version' => 'เวอร์ชั่น',
     'effective_date' => 'วันที่มีผลบังคับใช้',
+    'governance_no_documents' => 'ยังไม่มีเอกสารในหมวดนี้',
+    'governance_total_documents' => 'เอกสาร',
 
     // Document Library
     'document_center' => 'เอกสารเผยแพร่',

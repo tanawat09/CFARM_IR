@@ -583,6 +583,7 @@
                 <a class="nav-link" href="{{ route('financial.index') }}">{{ __('messages.financial') }}</a>
                 <a class="nav-link" href="{{ route('documents.index') }}">{{ __('messages.documents') }}</a>
                 <a class="nav-link" href="{{ route('events.index') }}">{{ __('messages.events') }}</a>
+                <a class="nav-link" href="{{ route('governance.index') }}">{{ __('messages.governance') }}</a>
                 <a class="nav-link" href="{{ route('shareholders.index') }}">{{ __('messages.shareholders') }}</a>
                 <a class="nav-link" href="{{ route('contact.index') }}">{{ __('messages.contact_us') }}</a>
             </div>
@@ -802,5 +803,6 @@
         }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
     </script>
     @yield('scripts')
+    @include('components.popup')
 </body>
 </html>

@@ -10,7 +10,7 @@ class GovernanceDocument extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title_th', 'title_en', 'file_path', 'version', 'effective_date',
+        'title_th', 'title_en', 'category', 'file_path', 'version', 'effective_date', 'display_order',
     ];
 
     protected $casts = [

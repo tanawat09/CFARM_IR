@@ -105,6 +105,9 @@
             <a href="{{ route('admin.events.index') }}"
                 class="nav-link {{ request()->routeIs('admin.events.*') ? 'active' : '' }}"><i
                     class="bi bi-calendar-event"></i> กิจกรรมนักลงทุน</a>
+            <a href="{{ route('admin.governance.index') }}"
+                class="nav-link {{ request()->routeIs('admin.governance.*') ? 'active' : '' }}"><i
+                    class="bi bi-shield-check"></i> การกำกับดูแลกิจการ</a>
             <a href="{{ route('admin.shareholders.index') }}"
                 class="nav-link {{ request()->routeIs('admin.shareholders.*') ? 'active' : '' }}"><i
                     class="bi bi-pie-chart-fill"></i> ข้อมูลผู้ถือหุ้น</a>
@@ -124,6 +127,9 @@
             <a href="{{ route('admin.settings.company_profile') }}"
                 class="nav-link {{ request()->routeIs('admin.settings.company_profile') ? 'active' : '' }}"><i
                     class="bi bi-building-gear"></i> ข้อมูลบริษัท</a>
+            <a href="{{ route('admin.popups.index') }}"
+                class="nav-link {{ request()->routeIs('admin.popups.*') ? 'active' : '' }}"><i
+                    class="bi bi-window-stack"></i> จัดการ Popup</a>
             <hr class="border-secondary mx-3">
             <a href="{{ route('admin.users.index') }}"
                 class="nav-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}"><i

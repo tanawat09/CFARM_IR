@@ -153,8 +153,11 @@ return [
 
     // Governance
     'governance' => 'Corporate Governance',
+    'governance_subtitle' => 'Corporate Governance',
     'version' => 'Version',
     'effective_date' => 'Effective Date',
+    'governance_no_documents' => 'No documents in this section yet.',
+    'governance_total_documents' => 'document(s)',
 
     // Document Library
     'document_library' => 'Document Library',

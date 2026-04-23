@@ -108,8 +108,24 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     // Financial Reports
     Route::resource('financial-reports', \App\Http\Controllers\Admin\FinancialReportController::class)->except(['show']);
 
+    // Document Years (AJAX)
+    Route::post('/document-years', function (\Illuminate\Http\Request $request) {
+        $request->validate(['year' => 'required|integer|min:2500|max:2600|unique:document_years,year']);
+        $year = \App\Models\DocumentYear::create(['year' => $request->year]);
+        if (ob_get_level()) ob_clean();
+        return response()->json(['success' => true, 'id' => $year->id, 'year' => $year->year]);
+    })->name('document-years.store');
+
     // Users Management
     Route::resource('users', AdminUserController::class)->except(['show']);
+
+    // Governance Documents
+    Route::resource('governance', \App\Http\Controllers\Admin\GovernanceDocumentController::class)->except(['show']);
+    Route::get('governance/section/{key}/edit', [\App\Http\Controllers\Admin\GovernanceDocumentController::class, 'editSection'])->name('governance.section.edit');
+    Route::put('governance/section/{key}', [\App\Http\Controllers\Admin\GovernanceDocumentController::class, 'updateSection'])->name('governance.section.update');
+
+    // Popups
+    Route::resource('popups', \App\Http\Controllers\Admin\PopupController::class)->except(['show']);
 
     // Audit Logs (View Only)
     Route::resource('audit-logs', AuditLogController::class)->only(['index', 'show']);

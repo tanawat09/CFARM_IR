@@ -10,7 +10,7 @@
         'Annual Report' => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop',
         'แบบ 56-1 One Report' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop', // Charts/Data
         'One Report' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop',
-        'เอกสารนำเสนอ' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop', // Presentation
+        'เอกสารนำเสนอ & Webcasts' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop', // Presentation
         'Presentation' => 'https://images.unsplash.com/photo-1557804506-669a67965ba0?w=600&h=400&fit=crop',
         'หนังสือชี้ชวน' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop', // Legal doc
         'Prospectus' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop',
@@ -18,6 +18,8 @@
         'Invitation to Shareholders' => 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&h=400&fit=crop',
         'รายงานการประชุมผู้ถือหุ้น' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32b7?w=600&h=400&fit=crop', // Boardroom
         'Shareholders Meeting Minutes' => 'https://images.unsplash.com/photo-1556761175-5973dc0f32b7?w=600&h=400&fit=crop',
+        'รายงานความยั่งยืน' => 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&h=400&fit=crop', // Sustainability
+        'Sustainability Report' => 'https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&h=400&fit=crop',
     ];
     $defaultImage = 'https://images.unsplash.com/photo-1618044733300-9472054094ee?w=600&h=400&fit=crop';
 
@@ -27,7 +29,7 @@
         'Annual Report' => 'bi-journal-richtext',
         'แบบ 56-1 One Report' => 'bi-file-earmark-bar-graph',
         'One Report' => 'bi-file-earmark-bar-graph',
-        'เอกสารนำเสนอ' => 'bi-easel',
+        'เอกสารนำเสนอ & Webcasts' => 'bi-easel',
         'Presentation' => 'bi-easel',
         'หนังสือชี้ชวน' => 'bi-file-earmark-text',
         'Prospectus' => 'bi-file-earmark-text',
@@ -35,6 +37,8 @@
         'Invitation to Shareholders' => 'bi-envelope-paper',
         'รายงานการประชุมผู้ถือหุ้น' => 'bi-people',
         'Shareholders Meeting Minutes' => 'bi-people',
+        'รายงานความยั่งยืน' => 'bi-tree',
+        'Sustainability Report' => 'bi-tree',
     ];
 @endphp
 
