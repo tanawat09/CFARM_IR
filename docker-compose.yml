@@ -16,16 +16,18 @@ services:
       APP_ENV: production
       APP_KEY: "base64:iZpDnX7tcAUX9QUJNXikuAxOSx93g94UEERNKOdJ3v4="
       APP_DEBUG: "true"
-      APP_URL: "http://192.168.7.3:2019"
+      APP_URL: "http://webserver"
       LOG_CHANNEL: stderr
       DB_CONNECTION: mysql
-      DB_HOST: 192.168.7.3
-      DB_PORT: 3308
+      DB_HOST: db
+      DB_PORT: 3306
       DB_DATABASE: cfarm_ir
       DB_USERNAME: itadmin
       DB_PASSWORD: "Noipalee@09"
     networks:
       - cfarm_network
+    depends_on:
+      - db
 
   webserver:
     build:
@@ -42,7 +44,23 @@ services:
       - cfarm_network
     depends_on:
       - app
-      
+
+  db:
+    image: mysql:8.0
+    container_name: cfarm_ir_db
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: cfarm_ir
+      MYSQL_USER: itadmin
+      MYSQL_PASSWORD: "Noipalee@09"
+      MYSQL_ROOT_PASSWORD: "Noipalee@09"
+    volumes:
+      - cfarm_db_data:/var/lib/mysql
+    networks:
+      - cfarm_network
+
   scheduler:
     image: cfarm-ir-app:v1
     container_name: cfarm_ir_scheduler
@@ -54,11 +72,11 @@ services:
       APP_ENV: production
       APP_KEY: "base64:iZpDnX7tcAUX9QUJNXikuAxOSx93g94UEERNKOdJ3v4="
       APP_DEBUG: "true"
-      APP_URL: "http://192.168.7.3:2019"
+      APP_URL: "http://webserver"
       LOG_CHANNEL: stderr
       DB_CONNECTION: mysql
-      DB_HOST: 192.168.7.3
-      DB_PORT: 3308
+      DB_HOST: db
+      DB_PORT: 3306
       DB_DATABASE: cfarm_ir
       DB_USERNAME: itadmin
       DB_PASSWORD: "Noipalee@09"
@@ -66,6 +84,7 @@ services:
       - cfarm_network
     depends_on:
       - app
+      - db
 
 networks:
   cfarm_network:
@@ -73,3 +92,4 @@ networks:
 
 volumes:
   cfarm_storage_data:
+  cfarm_db_data:
