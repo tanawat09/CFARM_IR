@@ -46,7 +46,7 @@ services:
       - app
 
   db:
-    image: mysql:8.0
+    image: mariadb:10.11
     container_name: cfarm_ir_db
     restart: unless-stopped
     ports:
