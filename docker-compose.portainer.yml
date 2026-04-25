@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  app:
+    image: cfarm-ir-app:v1
+    container_name: cfarm_ir_app
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - cfarm_storage_data:/var/www/html/storage
+    environment:
+      APP_NAME: "CFARM IR System"
+      APP_ENV: production
+      APP_KEY: "base64:iZpDnX7tcAUX9QUJNXikuAxOSx93g94UEERNKOdJ3v4="
+      APP_DEBUG: "true"
+      APP_URL: "http://webserver"
+      LOG_CHANNEL: stderr
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: cfarm_ir
+      DB_USERNAME: itadmin
+      DB_PASSWORD: "Noipalee@09"
+    networks:
+      - cfarm_network
+    depends_on:
+      - db
+
+  webserver:
+    image: cfarm-ir-webserver:v1
+    container_name: cfarm_ir_webserver
+    restart: unless-stopped
+    ports:
+      - "2019:80"
+    volumes:
+      - cfarm_storage_data:/var/www/html/storage
+    networks:
+      - cfarm_network
+    depends_on:
+      - app
+
+  db:
+    image: mysql:8.0
+    container_name: cfarm_ir_db
+    restart: unless-stopped
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: cfarm_ir
+      MYSQL_USER: itadmin
+      MYSQL_PASSWORD: "Noipalee@09"
+      MYSQL_ROOT_PASSWORD: "Noipalee@09"
+    volumes:
+      - cfarm_db_data:/var/lib/mysql
+    networks:
+      - cfarm_network
+
+  scheduler:
+    image: cfarm-ir-app:v1
+    container_name: cfarm_ir_scheduler
+    restart: unless-stopped
+    working_dir: /var/www/html
+    command: php artisan schedule:work
+    environment:
+      APP_NAME: "CFARM IR System"
+      APP_ENV: production
+      APP_KEY: "base64:iZpDnX7tcAUX9QUJNXikuAxOSx93g94UEERNKOdJ3v4="
+      APP_DEBUG: "true"
+      APP_URL: "http://webserver"
+      LOG_CHANNEL: stderr
+      DB_CONNECTION: mysql
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: cfarm_ir
+      DB_USERNAME: itadmin
+      DB_PASSWORD: "Noipalee@09"
+    networks:
+      - cfarm_network
+    depends_on:
+      - app
+      - db
+
+networks:
+  cfarm_network:
+    driver: bridge
+
+volumes:
+  cfarm_storage_data:
+  cfarm_db_data:
