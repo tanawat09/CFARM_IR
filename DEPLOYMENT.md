@@ -68,7 +68,6 @@ docker-compose up -d --build
 
 # 2. Install dependencies inside container
 docker exec cfarm_ir_app composer install
-docker exec cfarm_ir_app php artisan key:generate
 docker exec cfarm_ir_app php artisan migrate --seed
 docker exec cfarm_ir_app php artisan storage:link
 
@@ -81,6 +80,47 @@ Services:
 |-------------|------------------------|
 | App         | http://localhost:8080   |
 | phpMyAdmin  | http://localhost:8081 (start with `docker compose --profile debug up`) |
+
+---
+
+## Portainer Deployment
+
+Portainer should deploy this project with `docker-compose.portainer.yml`, not `docker-compose.yml`.
+The Portainer stack file is image-only, so it avoids the remote `compose build` path that can fail with BuildKit/HTTP2 errors.
+
+### 1. Build and push the images from a machine that has Docker
+
+```powershell
+.\scripts\build-portainer-images.ps1 -Registry ghcr.io/your-org -Tag v1 -Push
+```
+
+This script prints the exact `APP_IMAGE` and `WEBSERVER_IMAGE` values to paste into Portainer.
+
+### 2. Create the stack in Portainer
+
+- Use `docker-compose.portainer.yml`
+- Set stack environment variables from `portainer.env.example`
+- At minimum, set:
+  - `APP_IMAGE`
+  - `WEBSERVER_IMAGE`
+  - `APP_KEY`
+  - `DB_PASSWORD`
+  - `DB_ROOT_PASSWORD`
+
+### 3. Recommended production values
+
+```env
+APP_ENV=production
+APP_DEBUG=false
+APP_URL=https://your-domain
+APP_PORT=2019
+DB_DATABASE=cfarm_ir
+DB_USERNAME=itadmin
+DB_PASSWORD=replace-with-strong-password
+DB_ROOT_PASSWORD=replace-with-strong-root-password
+```
+
+If you deploy the stack from a Git repository in Portainer, point the compose path to `docker-compose.portainer.yml`.
 
 ---
 
